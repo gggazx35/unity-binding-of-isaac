@@ -1,3 +1,40 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:db50ce4eca2fc087b4c1d037b6c0b51a27a80dc2af0f6c1a0958e9a9d8bc560a
-size 709
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[System.Serializable]
+public class Node2D
+{
+    public int gCost, hCost;
+    public bool obstacle;
+    public Vector3 worldPosition;
+
+    public int GridX, GridY;
+    public Node2D parent;
+
+
+    public Node2D(bool _obstacle, Vector3 _worldPos, int _gridX, int _gridY)
+    {
+        // 초기값 설정
+        obstacle = _obstacle;
+        worldPosition = _worldPos;
+        GridX = _gridX;
+        GridY = _gridY;
+    }
+
+    // FCost 연산
+    public int FCost
+    {
+        get
+        {
+            return gCost + hCost;
+        }
+
+    }
+    
+
+    public void SetObstacle(bool isOb)
+    {
+        obstacle = isOb;
+    }
+}

@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1e407ba5d9a6c60bb650ba79c322d2c90f1d5d9f1008b67993afd544f7fb5e86
-size 486
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class OnClickTriggerExplode : MonoBehaviour
+{
+    public GameObject Explosion;
+    public Mob gobj;
+    // Start is called before the first frame update
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            Instantiate(Explosion, transform.position, Quaternion.identity);
+            gobj.TakeDamage(9999.0f);
+        }
+    }
+}

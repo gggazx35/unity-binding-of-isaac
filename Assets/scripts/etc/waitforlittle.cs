@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:50cb5f009d0d90c6da2106b58592ad0238f499cc5755bde64b47e4701b95cb71
-size 428
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class waitforlittle : MonoBehaviour
+{
+    public float t = 1.2f;
+    // Start is called before the first frame update
+    void Start()
+    {
+        gameObject.active = false;
+
+        Invoke("thing", t);
+
+    }
+
+    // Update is called once per frame
+    void thing()
+    {
+
+        gameObject.active = true;
+    }
+}

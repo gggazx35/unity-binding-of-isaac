@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f403324c98688a67163e5e29e71ae702a77a0fba082ed88bd48f25ebf3fae986
-size 539
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+public class ItemObject : MonoBehaviour
+{
+    public int Id;
+    [SerializeField] Item item;
+    private void Awake()
+    {
+        item = ItemList.GetItemById(Id);
+
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            item = ItemList.GetItemById(Id);
+            other.GetComponent<ItemReader>().AddItem(item);
+            Destroy(gameObject);
+        }
+    }
+}
